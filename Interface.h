@@ -26,7 +26,7 @@ typedef struct {
     Pin RX;
     Pin TX;
     int available;
-    int buf[4];
+    int buf[5];
 } Serial;
 
 // Function declarations

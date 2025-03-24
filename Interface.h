@@ -29,12 +29,6 @@ typedef struct {
     int buf[5];
 } Serial;
 
-// Function declarations
-int add(int a, int b);
-int subtract(int a, int b);
-int multiply(int a, int b);
-double divide(int a, int b);
-
 void output_lcd(char* message);
 
 #endif // INTERFACE_H

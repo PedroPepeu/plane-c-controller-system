@@ -1,5 +1,7 @@
 #include "Interface.h"
+#include <complex.h>
 #include <stdio.h>
+#include <string.h>
 
 Pin VELOCIDADE_IN;
 Pin ALTITUDE_IN;
@@ -8,61 +10,54 @@ Pin TEMPERATURA_IN;
 Pin reset_pin;
 Pin reset_ac;
 
+// // Código C++ para Arduino
+// int VELOCIDADE_IN = A-2;
+// int ALTITUDE_IN = A-1;
+// int DIRECAO_IN = A0;
+// int TEMPERATURA_IN = 1;
+// int reset_pin = 11;
+// int reset_ac = 10;
 int main() {
     VELOCIDADE_IN.type = PIN_NAME;
     ALTITUDE_IN.type = PIN_NAME;
     DIRECAO_IN.type = PIN_NAME;
-    TEMPERATURA_IN.type = PIN_NAME;
+    TEMPERATURA_IN.type = PIN_INT;
+    reset_pin.type = PIN_INT;
+    reset_ac.type = PIN_INT;
+
+    //   	pinMode(reset_pin, INPUT);
+    //     pinMode(VELOCIDADE_IN, INPUT);
+    //     pinMode(ALTITUDE_IN, INPUT);
+    //     pinMode(DIRECAO_IN, INPUT);
+    //     pinMode(TEMPERATURA_IN, INPUT);
+    strcpy(VELOCIDADE_IN.pinName, "A2");
+    strcpy(ALTITUDE_IN.pinName, "A1");
+    strcpy(DIRECAO_IN.pinName, "A0");
+    TEMPERATURA_IN.pinValue = 1;
+
+    reset_pin.pinValue = 11;
+    reset_ac.pinValue = 10;
+    //   	Serial.begin(9600);
+    //   	delay(1000);  // Wait for serial to stabilize
+    // }
 
 }
-
-// Function implementations
-int add(int a, int b) {
-    return a + b;
-}
-
-int subtract(int a, int b) {
-    return a - b;
-}
-
-int multiply(int a, int b) {
-    return a * b;
-}
-
-double divide(int a, int b) {
-    if (b == 0) {
-        printf("Error: Division by zero\n");
-        return 0.0;
-    }
-    return (double)a / b;
-}
-
-// // Código C++ para Arduino
-// int VELOCIDADE_IN = A0;
-// int ALTITUDE_IN = A1;
-// int DIRECAO_IN = A2;
-// int TEMPERATURA_IN = 3;
-// int reset_pin = 13;
-// int reset_ac = 12;
-
-// void setup()
-// {
-//   	pinMode(reset_pin, INPUT);
-//     pinMode(VELOCIDADE_IN, INPUT);
-//     pinMode(ALTITUDE_IN, INPUT);
-//     pinMode(DIRECAO_IN, INPUT);
-
-//     pinMode(TEMPERATURA_IN, INPUT);
-
-//   	Serial.begin(9600);
-//   	delay(1000);  // Wait for serial to stabilize
-// }
 
 // void clearSerialBuffer() {
 //     while (Serial.available() > 0) {
 //         Serial.read();  // Discard any available data in the buffer
 //     }
 // }
+
+void clearSerialBuffer() {
+    while(mySerial.available() > 0) {
+        mySerial.read();
+    }
+}
+
+void loop() {
+
+}
 
 // void loop()
 // {

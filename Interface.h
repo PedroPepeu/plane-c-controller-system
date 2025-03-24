@@ -17,7 +17,7 @@ typedef struct {
 
 // Can change the signal for HIGH or LOW following the 1 or 0 command
 // Dont recall if the *pin will change in the address if I send the &pin
-void flipSignal(Pin *pin, char OPERATOR) {
+void flipSignal(Pin *pin, int OPERATOR) {
     pin->signal = OPERATOR;
 }
 
@@ -25,6 +25,8 @@ void flipSignal(Pin *pin, char OPERATOR) {
 typedef struct {
     Pin RX;
     Pin TX;
+    int available;
+    int buf[4];
 } Serial;
 
 // Function declarations
@@ -32,5 +34,7 @@ int add(int a, int b);
 int subtract(int a, int b);
 int multiply(int a, int b);
 double divide(int a, int b);
+
+void output_lcd(char* message);
 
 #endif // INTERFACE_H

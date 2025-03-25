@@ -2,7 +2,12 @@
 #define INTERFACE_H
 
 // The signal can be a name or an int
+#include <stdlib.h>
 typedef enum { PIN_INT, PIN_NAME } PinType;
+
+int sensorValue(int max) {
+    return rand() % (max + 1);
+}
 
 // Create an struct so it can receive each of both
 typedef struct {
@@ -13,6 +18,7 @@ typedef struct {
     };
     int signal;          // High or Low (1 or 0)
     char flow[3];
+    int sensorResp;
 } Pin;
 
 // Can change the signal for HIGH or LOW following the 1 or 0 command
